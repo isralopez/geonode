@@ -1,0 +1,60 @@
+{% load i18n %}
+<div id="permissions-body" >
+  <div class="control-group" id="permission-view-download" >
+    <label class="control-label">{% trans "Who can view and download this data?" %}</label>
+    <div class="controls">
+      <div class="radio">
+        <label>
+          <input type="checkbox" name="view_anonymous" id="perms_view_anyone" value="AnonymousUser">
+          {% trans "Anyone" %}
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          {% trans "The following users:" %}
+          <input class="user-select" type="text" name="view_resourcebase" id="view_resourcebase_users" />
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          {% trans "The following groups:" %}
+          <input class="group-select" type="text" name="view_resourcebase" id="view_resourcebase_groups" />
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="control-group" id="permission-edit" >
+    <label class="control-label">{% trans "Who can edit this data?" %}</label>
+    <div class="controls">
+      <div class="radio">
+        <label>
+          {% trans "The following users:" %}
+          <input class="user-select" type="text" name="change_resourcebase" id="change_resourcebase_users" />
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          {% trans "The following groups:" %}
+          <input class="group-select" type="text" name="change_resourcebase" id="change_resourcebase_groups" /> 
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">{% trans "Who can manage?" %}</label>
+    <div class="controls">
+      <div class="radio">
+        <label>
+          {% trans "The following users:" %}
+          <input class="user-select" type="text" name="change_resourcebase_permissions" id="change_resourcebase_permissions_users" />   
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          {% trans "The following groups:" %}
+          <input class="group-select" type="text" name="change_resourcebase_permissions" id="change_resourcebase_permissions_groups" />          
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

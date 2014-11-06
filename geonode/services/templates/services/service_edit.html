@@ -1,0 +1,22 @@
+{% extends "services/services_base.html" %}
+{% load bootstrap_tags %}
+{% load i18n %}
+
+{% block head %}
+{{ block.super }}
+
+
+{% endblock %}
+
+{% block title %} Edit Service - {{ block.super }} {% endblock %}
+
+{% block body %}
+
+    <h2 class="page-title">Edit Service</h2>
+    <form method="POST" id="service_edit_form">
+        {% csrf_token %}
+            {{ service_form|as_bootstrap }}
+        <div class="form_block"><p><input type="submit" class="btn btn-primary pull-left" value="{% trans "Save" %}"/></p></div>
+    </form>
+
+{% endblock %}

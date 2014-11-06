@@ -1,0 +1,74 @@
+{% extends "documents/project_upload_base.html" %}
+{% load bootstrap_tags %}
+{% load i18n %}
+
+{% block title %} Cargar Projecto {% endblock %}
+
+{% block body_class %}documents upload{% endblock body_class %}
+
+{% block head %}
+    {% include "geonode/ext_header.html" %}
+    {% include "geonode/app_header.html" %}
+    {{ block.super }}
+{% endblock %}
+
+{% block body %}
+
+<div class="col-md-8">
+  <form id="upload_form"  method="post" enctype="multipart/form-data" action="{% url "geocyber_upload" %}">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
+    {{ form|as_bootstrap }}
+    <button type="submit" id="upload-button" class="btn btn-danger">Subir</button>
+  </form>
+
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+
+<div class="col-md-4">
+  <h3>{% trans "Permissions"  %}</h3>
+  <form id="permission_form">
+    {% include "_permissions.html" %}
+  </form>
+</div>
+
+{% endblock %}
+
+{% block extra_script %}
+{% include "_permissions_form_js.html" %}
+
+<script type="text/javascript">
+    $('#id_doc_file').on('change', function(){
+        if($('#id_title').val() == ''){
+            $('#id_title').val($('#id_doc_file').val());
+        }
+    });
+    $("#resource").select2({
+        minimumInputLength: 1,
+        placeholder: 'Select layer, map or empty',
+        width: 'element',
+        ajax: {
+          url: '{% url 'api_dispatch_list' api_name='api' resource_name='base' %}',
+          data: function(term,page){
+            return {
+              type: 'layer,map',
+              q: term.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
+            }
+          },
+          results: function(data) {
+            return {
+              results: $.map(data.results,function(object){
+                return {id: object.id, text: object.title, type: object._type};
+              })
+            }
+          }          
+        }
+      });
+    $('#resource').on('change',function(e){$('#resource_type').val($('#resource').select2('data').type)});
+    $('#upload_form').submit(function(){
+      $('#permissions').val(JSON.stringify(permissionsString($('#permission_form'),'base')));
+    });
+</script>
+{% endblock extra_script %}

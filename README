@@ -1,0 +1,145 @@
+.. image:: https://secure.travis-ci.org/GeoNode/geonode.png
+    :alt: Build Status
+    :target: http://travis-ci.org/GeoNode/geonode
+
+=================
+Geonode CentroGEO
+=================
+
+Desarrollo personalizado para CentroGEO de la plataforma GeoNode.
+
+Esta adaptación deriva de la versión 2.4alpha14 (aprox.) de la rama Master de desarrollo del repositorio oficial del proyecto:
+
+https://github.com/GeoNode/geonode
+
+Su estado actual es una version de desarrollo que puede ser utilizada sobre Ubuntu 14.04.
+
+Clonando este repositorio se tendra una version funcional con base de datos en SQLite3.
+
+Una vez clonado el repositorio se debe ejecutar los siguientes comandos para iniciar el servicio:
+
+$ cd geonode
+
+$ paver start
+
+Consultar la siguiente dirección para ver la aplicación:
+
+http://localhost:8000
+
+Basandose en las instrucciones proporcionadas en las siguientes ligas seria posible adecuar esta version para un entorno de producción:
+
+http://geonode.readthedocs.org/en/latest/tutorials/admin/install/custom_install.html#custom-install http://docs.geonode.org/en/dev/deploy/production.html
+
+Las dependencias necesarias para la ejecución de la plataforma se describen a continuación
+en las instrucciones originales del proyecto para Ubuntu 14.04.
+
+
+==============================
+ GeoNode Original Instructions
+==============================
+
+If you just want to try GeoNode, it is recommended to use Ubuntu 14.04 or use Ubuntu 12.04 and install the python software properties.::
+
+    sudo apt-get install python-software-properties
+
+For 14.04 and for 12.04 with python software properties installed, install the latest stable release of GeoNode.::
+
+    sudo add-apt-repository ppa:geonode/release
+    sudo apt-get update
+    sudo apt-get install geonode
+
+If instead, you are interested in doing development on the source code, here are the instructions for Ubuntu 14.04::
+
+    # retrieve latest apt-get list
+    sudo apt-get update
+
+    # Essential build tools and libraries
+    sudo apt-get install -y build-essential libxml2-dev libxslt1-dev libjpeg-dev gettext git python-dev python-pip
+
+    # Python and Django dependencies with official packages
+    sudo apt-get install python-pillow python-lxml python-psycopg2 python-django python-bs4 python-multipartposthandler transifex-client python-paver python-nose python-django-nose python-gdal python-django-pagination python-django-jsonfield python-django-extensions python-django-taggit python-httplib2
+    
+    # Java dependencies
+    sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recommends
+
+    # Clone GeoNode
+    git clone https://github.com/GeoNode/geonode.git
+
+    # Install GeoNode in editable mode
+    sudo pip install -e geonode
+    cd geonode
+
+    # Compile GeoServer
+    paver setup
+
+    # Start the development servers
+    paver start
+
+    # Visit the development geonode site
+    http://localhost:8000
+
+
+
+Once fully started, you should see a message indicating the address of your geonode.
+The default username and password are ``admin`` and ``admin``::
+  
+  Development GeoNode is running at http://localhost:8000/
+  The GeoNode is an unstoppable machine
+  Press CTRL-C to shut down
+
+Before starting GeoNode (paver start), you could test your installation by running tests::
+
+    paver test
+    paver test_integration
+    
+In case you want to build yourself the documentation, you need to install Sphinx and the run 'make html' from within the docs directory::
+
+    pip install Sphinx
+    cd docs
+    make html
+    
+You can eventually generate a pdf containing the whole documentation set. For this purpose, if using Ubuntu 12.4 you will need to install the texlive-full package::
+
+    sudo apt-get install texlive-full
+    make latexpdf
+
+.. note:: 
+
+  When running ``virtualenv venv`` the ``--system-site-packages`` option is
+  not required.  If not enabled, the bootstrap script will sandbox your virtual
+  environment from any packages that are installed in the system, useful if
+  you have incompatible versions of libraries such as Django installed
+  system-wide.  On the other hand, most of the times it is useful to use a version of
+  the Python Imaging Library provided by your operating system
+  vendor, or packaged other than on PyPI.  When in doubt, however, just leave
+  this option out.
+
+Development Roadmap
+===================
+
+Geonode's development roadmap is documented in a series of Geonode Improvement Projects (GNIPS). 
+They are documented here: https://github.com/GeoNode/geonode/wiki/GeoNode-Improvement-Proposals.
+GNIPS are considered to be large undertakings which will add a large amount of features to the project. 
+As such they are the topic of community dicussion and guidance.
+The community discusses these on the developer mailing list: https://groups.google.com/a/opengeo.org/forum/#!forum/geonode-dev
+Github issues tracks features and bugs, for new developers the tag 'easy-pick' indicates an 
+issue that should be relatively easy for new developers to understand and complete. Once you have completed an issue
+a pull request should be submitted. This will then be reviewed by the community.
+
+GPL License
+===========
+
+GeoNode is Copyright 2010 OpenPlans.
+
+GeoNode is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+GeoNode is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GeoNode.  If not, see <http://www.gnu.org/licenses/>.
