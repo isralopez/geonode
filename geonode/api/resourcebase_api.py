@@ -22,6 +22,7 @@ from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
 from geonode.base.models import ResourceBase
+from geonode.project.models import Project
 
 from .authorization import GeoNodeAuthorization
 
@@ -163,7 +164,7 @@ class CommonModelApi(ModelResource):
             subtypes = []
 
             for type in type_facets:
-                if type in ["map", "layer", "document", "user"]:
+                if type in ["map", "layer", "document", "user", "project"]:
                     # Type is one of our Major Types (not a sub type)
                     types.append(type)
                 elif type in LAYER_SUBTYPES.keys():
@@ -491,3 +492,13 @@ class DocumentResource(CommonModelApi):
         filtering.update({'doc_type': ALL})
         queryset = Document.objects.distinct().order_by('-date')
         resource_name = 'documents'
+
+class ProjectResource(CommonModelApi):
+
+    """Maps API"""
+
+    class Meta(CommonMetaApi):
+        filtering = CommonMetaApi.filtering
+        filtering.update({'doc_type': ALL})
+        queryset = Project.objects.distinct().order_by('-date')
+        resource_name = 'projects'

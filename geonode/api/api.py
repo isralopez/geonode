@@ -11,6 +11,7 @@ from geonode.base.models import TopicCategory
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
+from geonode.project.models import Project
 from geonode.groups.models import GroupProfile
 
 from taggit.models import Tag
@@ -23,7 +24,8 @@ from tastypie.utils import trailing_slash
 FILTER_TYPES = {
     'layer': Layer,
     'map': Map,
-    'document': Document
+    'document': Document,
+    'project': Project
 }
 
 
@@ -200,6 +202,11 @@ class ProfileResource(ModelResource):
     def dehydrate_documents_count(self, bundle):
         obj_with_perms = get_objects_for_user(bundle.request.user,
                                               'base.view_resourcebase').instance_of(Document)
+        return bundle.obj.resourcebase_set.filter(id__in=obj_with_perms.values_list('id', flat=True)).distinct().count()
+
+    def dehydrate_project_count(self, bundle):
+        obj_with_perms = get_objects_for_user(bundle.request.user,
+                                              'base.view_resourcebase').instance_of(Project)
         return bundle.obj.resourcebase_set.filter(id__in=obj_with_perms.values_list('id', flat=True)).distinct().count()
 
     def dehydrate_avatar_100(self, bundle):

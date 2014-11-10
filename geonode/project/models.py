@@ -42,22 +42,23 @@ class Project(ResourceBase):
 
     doc_type = models.CharField(max_length=128, blank=True, null=True)
 
-    flag = models.PositiveIntegerField(blank=True, null=True)
-
     doc_url = models.URLField(
         blank=True,
         null=True,
-        help_text=_('The URL of the document if it is external.'),
+        help_text=_('URL del proyecto si es externo.'),
         verbose_name=_('URL'))
 
     proyecto_pertenece = models.CharField(max_length=128, blank=True, null=True)
     modelo_conocimiento = models.CharField(max_length=128, blank=True, null=True)
 
+
+
+
     def __unicode__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('document_detail', args=(self.id,))
+        return reverse('project_detail', args=(self.id,))
 
     @property
     def name_long(self):
