@@ -38,17 +38,7 @@ en las instrucciones originales del proyecto para Ubuntu 14.04.
  GeoNode Original Instructions
 ==============================
 
-If you just want to try GeoNode, it is recommended to use Ubuntu 14.04 or use Ubuntu 12.04 and install the python software properties.::
-
-    sudo apt-get install python-software-properties
-
-For 14.04 and for 12.04 with python software properties installed, install the latest stable release of GeoNode.::
-
-    sudo add-apt-repository ppa:geonode/release
-    sudo apt-get update
-    sudo apt-get install geonode
-
-If instead, you are interested in doing development on the source code, here are the instructions for Ubuntu 14.04::
+If you are interested in doing development on the source code, here are the instructions for Ubuntu 14.04::
 
     # retrieve latest apt-get list
     sudo apt-get update
@@ -78,14 +68,16 @@ If instead, you are interested in doing development on the source code, here are
     # Visit the development geonode site
     http://localhost:8000
 
-
-
 Once fully started, you should see a message indicating the address of your geonode.
 The default username and password are ``admin`` and ``admin``::
   
   Development GeoNode is running at http://localhost:8000/
   The GeoNode is an unstoppable machine
   Press CTRL-C to shut down
+
+
+
+(DE AQUI EN ADELANTE ES OPCIONAL)
 
 Before starting GeoNode (paver start), you could test your installation by running tests::
 
