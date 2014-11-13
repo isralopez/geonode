@@ -281,7 +281,7 @@ class ResourceBase(PolymorphicModel, PermissionLevelMixin):
 
     license = models.ForeignKey(License, null=True, blank=True,
                                 help_text=license_help_text)
-    language = models.CharField(_('language'), max_length=3, choices=ALL_LANGUAGES, default='eng',
+    language = models.CharField(_('language'), max_length=3, choices=ALL_LANGUAGES, default='spa',
                                 help_text=language_help_text)
 
     category = models.ForeignKey(TopicCategory, null=True, blank=True, limit_choices_to=Q(is_choice=True),

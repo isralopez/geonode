@@ -36,6 +36,7 @@ class Project(ResourceBase):
     doc_file = models.FileField(upload_to='documents',
                                 null=True,
                                 blank=True,
+                                help_text=_('Archivo del proyecto'),
                                 verbose_name=_('File'))
 
     extension = models.CharField(max_length=128, blank=True, null=True)
@@ -48,11 +49,17 @@ class Project(ResourceBase):
         help_text=_('URL del proyecto si es externo.'),
         verbose_name=_('URL'))
 
-    proyecto_pertenece = models.CharField(max_length=128, blank=True, null=True)
-    modelo_conocimiento = models.CharField(max_length=128, blank=True, null=True)
+    project_belong = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Proyecto al que pertenece'))
+    knowledge = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Modelo de conocimiento'))
+    disciplines = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Disciplinas'))
+    credits_to = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Creditos'))
+    vinc_intitutions = models.TextField(blank=True, null=True, verbose_name=_('Instituciones Vinculadas'))
+    colaborators = models.TextField(max_length=128, blank=True, null=True, verbose_name=_('Colaboradores'))
 
-
-
+    develop_arch = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Arquitectura de Desarrollo'))
+    repo_link = models.CharField(max_length=200, blank=True, null=True, verbose_name=_('Liga del Repositorio'))
+    min_inst_req = models.CharField(max_length=200, blank=True, null=True, verbose_name=_('Requisitos minimos de Instalacion'))
+    min_deploy_req = models.CharField(max_length=200, blank=True, null=True, verbose_name=_('Requisitos minimos de Visualizacion'))
 
     def __unicode__(self):
         return self.title

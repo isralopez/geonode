@@ -93,7 +93,7 @@ def project_detail(request, docid):
                     'related': related}))
 
 
-def document_download(request, docid):
+def project_download(request, docid):
     document = get_object_or_404(Project, pk=docid)
     if not request.user.has_perm(
             'base.view_resourcebase',

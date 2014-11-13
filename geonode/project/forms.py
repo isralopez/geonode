@@ -38,7 +38,7 @@ class DocumentForm(TranslationModelForm):
                 "class": "datepicker",
                 'data-date-format': "yyyy-mm-dd"}))
 
-    resource = forms.ChoiceField(label='Link to')
+    resource = forms.ChoiceField(label='Asociado con')
 
     poc = forms.ModelChoiceField(
         empty_label="Person outside GeoNode (fill form)",
@@ -58,11 +58,13 @@ class DocumentForm(TranslationModelForm):
         required=False,
         help_text=_("A space or comma-separated list of keywords"))
 
+    """
     regions = TreeNodeMultipleChoiceField(
         required=False,
         queryset=Region.objects.all(),
         level_indicator=u'___')
     regions.widget.attrs = {"size": 20}
+    """
 
     def __init__(self, *args, **kwargs):
         super(DocumentForm, self).__init__(*args, **kwargs)
@@ -143,7 +145,19 @@ class DocumentForm(TranslationModelForm):
             'popular_count',
             'share_count',
             'thumbnail',
-            'doc_url')
+            'doc_url',
+            'maintenance_frequency',
+            'thumbnail_url',
+            'detail_url',
+            'restriction_code_type',
+            'constraints_other',
+            'featured',
+            'rating',
+            'spatial_representation_type',
+            'regions',
+            'supplemental_information',
+            'data_quality_statement',
+            'language')
 
 
 class DocumentDescriptionForm(forms.Form):
@@ -206,7 +220,7 @@ class GeocyberCreateForm(TranslationModelForm):
         required=True)
     resource = forms.CharField(
         required=False,
-        label=_("Link to"),
+        label=_("Asociar con"),
         widget=TextInput(
             attrs={
                 'name': 'q',
@@ -214,7 +228,7 @@ class GeocyberCreateForm(TranslationModelForm):
 
     class Meta:
         model = Project
-        fields = ['title', 'doc_file', 'doc_url','proyecto_pertenece','modelo_conocimiento']
+        fields = ['title', 'doc_file', 'doc_url']
         widgets = {
             'name': HiddenInput(attrs={'cols': 80, 'rows': 20}),
         }
@@ -239,11 +253,11 @@ class GeocyberCreateForm(TranslationModelForm):
         doc_url = self.cleaned_data.get('doc_url')
 
         if not doc_file and not doc_url:
-            raise forms.ValidationError(_("Document must be a file or url."))
+            raise forms.ValidationError(_("El projecto debe contener un archivo o url."))
 
         if doc_file and doc_url:
             raise forms.ValidationError(
-                _("A document cannot have both a file and a url."))
+                _("Un Projecto no puede tener ambos: Archivo y URL"))
 
         return cleaned_data
 

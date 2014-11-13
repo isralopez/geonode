@@ -311,7 +311,9 @@ def start_django():
     Start the GeoNode Django application
     """
     bind = options.get('bind', '')
-    sh('python manage.py runserver %s &' % bind)
+    #Se comento la linea original para correr la app en una IP especifica
+    #sh('python manage.py runserver %s &' % bind)
+    sh('python manage.py runserver 192.168.7.28:8000')
 
 
 @cmdopts([

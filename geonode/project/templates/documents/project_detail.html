@@ -30,12 +30,12 @@
 
     {% if resource.extension|lower in imgtypes and resource.doc_file %}
     <div id="embedded_map">
-      <a style="text-decoration:none;" href="{% url "document_download" resource.id %}" target="_blank">
-        <img src="{% url "document_download" resource.id %}" width='100%' />
+      <a style="text-decoration:none;" href="{% url "project_download" resource.id %}" target="_blank">
+        <img src="{% url "project_download" resource.id %}" width='100%' />
       </a>
     </div>
     {% elif resource.doc_file %}
-    <p><a href="{% url "document_download" resource.id %}" target="_blank">Download the {{ resource }} document</a></p>
+    <p><a href="{% url "project_download" resource.id %}" target="_blank">Download the {{ resource }} document</a></p>
     {% elif  resource.doc_url %}
     <p><a href="{{ resource.doc_url }}" target="_blank">Download the {{ resource }} document.</a> <small>({% trans 'External Resource' %})</small></p>
     {%  endif %}
@@ -83,9 +83,9 @@
     <ul class="list-group">
       <li class="list-group-item">
         {% if resource.extension|lower in imgtypes and resource.doc_file %}
-          <a style="text-decoration:none;" target="_blank" href="{% url "document_download" resource.id %}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
+          <a style="text-decoration:none;" target="_blank" href="{% url "project_download" resource.id %}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
         {% elif resource.doc_file %}
-          <a style="text-decoration:none;" target="_blank" href="{% url "document_download" resource.id %}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
+          <a style="text-decoration:none;" target="_blank" href="{% url "project_download" resource.id %}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
         {% elif  resource.doc_url %}
           <a style="text-decoration:none;" target="_blank" href="{{ resource.doc_url }}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
         {%  endif %}
