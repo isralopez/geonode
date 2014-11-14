@@ -52,7 +52,7 @@
     </div>
 
     <div class="tab-content">
-      {% include "base/resourcebase_info_panel.html" %}
+      {% include "base/project_info_panel.html" %}
 
       {% block social_links %}
         {% include "social_links.html" %}
@@ -81,6 +81,7 @@
   <div class="col-md-4">
 
     <ul class="list-group">
+      <!--
       <li class="list-group-item">
         {% if resource.extension|lower in imgtypes and resource.doc_file %}
           <a style="text-decoration:none;" target="_blank" href="{% url "project_download" resource.id %}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
@@ -90,6 +91,7 @@
           <a style="text-decoration:none;" target="_blank" href="{{ resource.doc_url }}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
         {%  endif %}
       </li>
+      -->
       <li class="list-group-item">
         <button class="btn btn-default btn-md btn-block" data-toggle="modal" data-target="#download-metadata">{% trans "Download Metadata" %}</button>
       </li>
@@ -116,7 +118,7 @@
       {% get_obj_perms request.user for resource.get_self_resource as "resource_perms" %}
       {% if "change_resourcebase" in resource_perms %}
       <li class="list-group-item">
-        <button class="btn btn-default btn-md btn-block" data-toggle="modal" data-target="#edit-document">{% trans "Edit Document" %}</button>
+        <button class="btn btn-default btn-md btn-block" data-toggle="modal" data-target="#edit-document">Editar Proyecto/Aplicación</button>
       </li>
       <div class="modal fade" id="edit-document" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

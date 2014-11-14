@@ -24,10 +24,8 @@ logger = logging.getLogger(__name__)
 
 class Project(ResourceBase):
     """
-    ###Particular case of document class, developed for Centro GEO
+    ###Modelo implementado para las necesidades de Centro GEO
     """
-    #New Model Fields
-    #document = models.ForeignKey(Document, related_name="obra_asociada")
 
     content_type = models.ForeignKey(ContentType, blank=True, null=True)
     object_id = models.PositiveIntegerField(blank=True, null=True)
@@ -49,13 +47,21 @@ class Project(ResourceBase):
         help_text=_('URL del proyecto si es externo.'),
         verbose_name=_('URL'))
 
+    """###Fuente de la informacion"""
+    academic_coordinator = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Coordinador Academico'))
+    technical_coordinator = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Coordinador Tecnico'))
+    source = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Fuente'))
+    rights = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Derechos'))
+
+    """#Genesis de la obra"""
     project_belong = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Proyecto al que pertenece'))
-    knowledge = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Modelo de conocimiento'))
+    knowledge_model = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Modelo de conocimiento'))
     disciplines = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Disciplinas'))
     credits_to = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Creditos'))
     vinc_intitutions = models.TextField(blank=True, null=True, verbose_name=_('Instituciones Vinculadas'))
     colaborators = models.TextField(max_length=128, blank=True, null=True, verbose_name=_('Colaboradores'))
 
+    """#Soporte"""
     develop_arch = models.CharField(max_length=128, blank=True, null=True, verbose_name=_('Arquitectura de Desarrollo'))
     repo_link = models.CharField(max_length=200, blank=True, null=True, verbose_name=_('Liga del Repositorio'))
     min_inst_req = models.CharField(max_length=200, blank=True, null=True, verbose_name=_('Requisitos minimos de Instalacion'))
