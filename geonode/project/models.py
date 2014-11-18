@@ -34,7 +34,7 @@ class Project(ResourceBase):
     doc_file = models.FileField(upload_to='documents',
                                 null=True,
                                 blank=True,
-                                help_text=_('Archivo del proyecto'),
+                                help_text=_('Imagen asociada al proyecto'),
                                 verbose_name=_('File'))
 
     extension = models.CharField(max_length=128, blank=True, null=True)

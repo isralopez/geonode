@@ -18,7 +18,7 @@ from geonode.people.forms import ProfileForm
 from geonode.base.forms import CategoryForm
 from geonode.base.models import TopicCategory
 from geonode.project.models import Project
-from geonode.project.forms import DocumentForm, DocumentReplaceForm, GeocyberCreateForm
+from geonode.project.forms import ProjectForm, ProjectReplaceForm, GeocyberCreateForm
 from geonode.project.models import IMGTYPES
 
 ALLOWED_DOC_TYPES = settings.ALLOWED_DOCUMENT_TYPES
@@ -125,10 +125,10 @@ class GeocyberUploadView(CreateView):
                     self.object.id,
                 )))
 
-class DocumentUpdateView(UpdateView):
-    template_name = 'documents/document_replace.html'
+class ProjectUpdateView(UpdateView):
+    template_name = 'documents/project_replace.html'
     pk_url_kwarg = 'docid'
-    form_class = DocumentReplaceForm
+    form_class = ProjectReplaceForm
     queryset = Project.objects.all()
     context_object_name = 'document'
 
@@ -188,7 +188,7 @@ def project_metadata(
 
         if request.method == "POST":
             print "Entre a if"
-            document_form = DocumentForm(
+            document_form = ProjectForm(
                 request.POST,
                 instance=document,
                 prefix="resource")
@@ -199,7 +199,7 @@ def project_metadata(
                     request.POST["category_choice_field"]) if "category_choice_field" in request.POST else None)
         else:
             print "Entre a else"
-            document_form = DocumentForm(instance=document, prefix="resource")
+            document_form = ProjectForm(instance=document, prefix="resource")
             category_form = CategoryForm(
                 prefix="category_choice_field",
                 initial=topic_category.id if topic_category else None)
@@ -299,7 +299,7 @@ def document_search_page(request):
 
 
 @login_required
-def document_remove(request, docid, template='documents/document_remove.html'):
+def project_remove(request, docid, template='documents/project_remove.html'):
     try:
         document = _resolve_document_geo(
             request,
@@ -313,13 +313,13 @@ def document_remove(request, docid, template='documents/document_remove.html'):
             }))
         if request.method == 'POST':
             document.delete()
-            return HttpResponseRedirect(reverse("document_browse"))
+            return HttpResponseRedirect(reverse("project_browse"))
         else:
             return HttpResponse("Not allowed", status=403)
 
     except PermissionDenied:
         return HttpResponse(
-            'You are not allowed to delete this document',
+            'No tienes permitido borrar este Proyecto/Aplicacion',
             mimetype="text/plain",
             status=401
         )

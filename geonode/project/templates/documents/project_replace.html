@@ -15,7 +15,7 @@
     <div class="col-md-8">
       <h2 class="page-title">{% trans "Replace " %}{{ document.title }}</h2>
       <div id="upload_form">
-        <form method="post" enctype="multipart/form-data" action="{% url "document_replace" document.id %}">
+        <form method="post" enctype="multipart/form-data" action="{% url "project_replace" document.id %}">
           <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
           {{ form.errors }}
           {% if document.doc_file %}

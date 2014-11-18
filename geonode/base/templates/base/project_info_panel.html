@@ -9,12 +9,12 @@
 
     {% if resource.abstract %}
     <dt>{% trans "Abstract" %}</dt>
-    <dd>{{ resource.abstract|escape|urlize|linebreaks|safe|truncatechars:500 }}</dd>
+    <dd>{{ resource.abstract|escape|urlize|linebreaks|safe|truncatechars:700 }}</dd>
     {% endif %}
 
     {% if resource.purpose %}
     <dt>{% trans "Purpose" %}</dt>
-    <dd>{{ resource.purpose|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+    <dd>{{ resource.purpose|escape|urlize|linebreaks|safe|truncatechars:300 }}</dd>
     {% endif %}
     
     {% if resource.date %}
@@ -165,12 +165,12 @@
     <dt>Requisitos minimos</dt>
     <dd>{{ resource.min_inst_req }}</dd>
     {% endif %}
-
+    <!--
     {% if resource.supplemental_information %}
     <dt>{% trans "Supplemental Information" %}</dt>
     <dd>{{ resource.supplemental_information|truncatechars:160|escape|urlize|linebreaks|safe }}</dd>
     {% endif %}
-
+    -->
   </div>
 
   </dl>

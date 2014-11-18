@@ -22,7 +22,7 @@ from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
-from .views import DocumentUpdateView, GeocyberUploadView
+from .views import ProjectUpdateView, GeocyberUploadView
 
 js_info_dict = {
     'packages': ('geonode.project',),
@@ -40,11 +40,12 @@ urlpatterns = patterns('geonode.project.views',
                            'project_download',
                            name='project_download'),
                        url(r'^(?P<docid>\d+)/replace$',
-                           login_required(DocumentUpdateView.as_view()),
-                           name="document_replace"),
+                           login_required(ProjectUpdateView.as_view()),
+                           name="project_replace"),
                        url(r'^(?P<docid>\d+)/remove$',
-                           'document_remove',
-                           name="document_remove"),
+                           'project_remove',
+                           name="project_remove"),
+
                        url(r'^search/?$',
                            'document_search_page',
                            name='document_search_page'),
