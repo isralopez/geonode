@@ -426,7 +426,7 @@ NOSE_ARGS = [
 # GeoNode specific settings
 #
 
-SITEURL = "http://192.68.7.28:8000/"
+SITEURL = "http://localhost:8000/"
 
 USE_QUEUE = False
 
