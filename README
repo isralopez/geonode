@@ -22,25 +22,25 @@ Clonando este repositorio se tendra una version funcional con base de datos en S
 
 Para hacer desarrollo en el código fuente, estas son las instrucciones:
 
-    # retrieve latest apt-get list
+    # Obten la ultima lista apt-get
     
     sudo apt-get update
 
-    # Essential build tools and libraries
+    # Herramientas y librerias esenciales.
     
     sudo apt-get install -y build-essential libxml2-dev libxslt1-dev libjpeg-dev gettext git python-dev python-pip
 
-    # Python and Django dependencies with official packages
+    # Dependencias Python and Django con paquetes oficiales
     
     sudo apt-get install python-pillow python-lxml python-psycopg2 python-django python-bs4 python-multipartposthandler transifex-client python-paver python-nose python-django-nose python-gdal python-django-pagination python-django-jsonfield python-django-extensions python-django-taggit python-httplib2
     
-    # Java dependencies
+    # Instale dependencias Java
     
     sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recommends
 
     # Clone GeoNode
     
-    git clone https://github.com/isralopez/geonode
+    git clone https://github.com/isralopez/geonode.git
 
     # Instalar GeoNode en modo editable
     
@@ -51,7 +51,7 @@ Para hacer desarrollo en el código fuente, estas son las instrucciones:
     
     paver setup
 
-    # Start the development servers
+    # Arranque el servidor de desarrollo
     
     paver start
 
