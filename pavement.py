@@ -192,8 +192,8 @@ def sync(options):
     Run the syncdb and migrate management commands to create and migrate a DB
     """
     sh("python manage.py syncdb --noinput")
-    sh("python manage.py migrate --noinput")
-    #sh("python manage.py loaddata sample_admin.json")
+    #sh("python manage.py migrate --noinput")
+    sh("python manage.py loaddata sample_admin.json")
 
 
 @task
@@ -312,8 +312,8 @@ def start_django():
     """
     bind = options.get('bind', '')
     #Se comento la linea original para correr la app en una IP especifica
-    #sh('python manage.py runserver %s &' % bind)
-    sh('python manage.py runserver 192.168.7.28:8000')
+    sh('python manage.py runserver %s &' % bind)
+    #sh('python manage.py runserver 192.168.7.28:8000')
 
 
 @cmdopts([
