@@ -16,29 +16,11 @@ Su estado actual es una version de desarrollo que puede ser utilizada sobre Ubun
 
 Clonando este repositorio se tendra una version funcional con base de datos en SQLite3.
 
-Una vez clonado el repositorio se debe ejecutar los siguientes comandos para iniciar el servicio:
-
-$ cd geonode
-
-$ paver start
-
-Consultar la siguiente dirección para ver la aplicación:
-
-http://localhost:8000
-
-Basandose en las instrucciones proporcionadas en las siguientes ligas seria posible adecuar esta version para un entorno de producción:
-
-http://geonode.readthedocs.org/en/latest/tutorials/admin/install/custom_install.html#custom-install http://docs.geonode.org/en/dev/deploy/production.html
-
-Las dependencias necesarias para la ejecución de la plataforma se describen a continuación
-en las instrucciones originales del proyecto para Ubuntu 14.04.
-
-
 ==============================
- GeoNode Original Instructions
+ Instrucciones de Instalación
 ==============================
 
-If you are interested in doing development on the source code, here are the instructions for Ubuntu 14.04::
+Para hacer desarrollo en el código fuente, estas son las instrucciones:
 
     # retrieve latest apt-get list
     sudo apt-get update
@@ -53,20 +35,21 @@ If you are interested in doing development on the source code, here are the inst
     sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recommends
 
     # Clone GeoNode
-    git clone https://github.com/GeoNode/geonode.git
+    git clone https://github.com/isralopez/geonode
 
-    # Install GeoNode in editable mode
+    # Instalar GeoNode en modo editable
     sudo pip install -e geonode
     cd geonode
 
-    # Compile GeoServer
+    # Compila GeoServer
     paver setup
-
+    
     # Start the development servers
     paver start
 
-    # Visit the development geonode site
+    # Visita la dirección de desarrollo:
     http://localhost:8000
+    
 
 Once fully started, you should see a message indicating the address of your geonode.
 The default username and password are ``admin`` and ``admin``::
@@ -75,6 +58,13 @@ The default username and password are ``admin`` and ``admin``::
   The GeoNode is an unstoppable machine
   Press CTRL-C to shut down
 
+
+Basandose en las instrucciones proporcionadas en las siguientes ligas seria posible adecuar esta version para un entorno de producción:
+
+http://geonode.readthedocs.org/en/latest/tutorials/admin/install/custom_install.html#custom-install http://docs.geonode.org/en/dev/deploy/production.html
+
+Las dependencias necesarias para la ejecución de la plataforma se describen a continuación
+en las instrucciones originales del proyecto para Ubuntu 14.04.
 
 
 (DE AQUI EN ADELANTE ES OPCIONAL)
@@ -105,33 +95,3 @@ You can eventually generate a pdf containing the whole documentation set. For th
   the Python Imaging Library provided by your operating system
   vendor, or packaged other than on PyPI.  When in doubt, however, just leave
   this option out.
-
-Development Roadmap
-===================
-
-Geonode's development roadmap is documented in a series of Geonode Improvement Projects (GNIPS). 
-They are documented here: https://github.com/GeoNode/geonode/wiki/GeoNode-Improvement-Proposals.
-GNIPS are considered to be large undertakings which will add a large amount of features to the project. 
-As such they are the topic of community dicussion and guidance.
-The community discusses these on the developer mailing list: https://groups.google.com/a/opengeo.org/forum/#!forum/geonode-dev
-Github issues tracks features and bugs, for new developers the tag 'easy-pick' indicates an 
-issue that should be relatively easy for new developers to understand and complete. Once you have completed an issue
-a pull request should be submitted. This will then be reviewed by the community.
-
-GPL License
-===========
-
-GeoNode is Copyright 2010 OpenPlans.
-
-GeoNode is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-GeoNode is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with GeoNode.  If not, see <http://www.gnu.org/licenses/>.
