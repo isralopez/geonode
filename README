@@ -23,6 +23,7 @@ Clonando este repositorio se tendra una version funcional con base de datos en S
 Para hacer desarrollo en el código fuente, estas son las instrucciones:
 
     # retrieve latest apt-get list
+    
     sudo apt-get update
 
     # Essential build tools and libraries
