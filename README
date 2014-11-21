@@ -22,46 +22,46 @@ Clonando este repositorio se tendra una version funcional con base de datos en S
 
 Para hacer desarrollo en el código fuente, estas son las instrucciones:
 
-    # Obten la ultima lista apt-get
-    
-    sudo apt-get update
+# Obten la ultima lista apt-get
 
-    # Herramientas y librerias esenciales.
-    
-    sudo apt-get install -y build-essential libxml2-dev libxslt1-dev libjpeg-dev gettext git python-dev python-pip
+sudo apt-get update
 
-    # Dependencias Python and Django con paquetes oficiales
-    
-    sudo apt-get install python-pillow python-lxml python-psycopg2 python-django python-bs4 python-multipartposthandler transifex-client python-paver python-nose python-django-nose python-gdal python-django-pagination python-django-jsonfield python-django-extensions python-django-taggit python-httplib2
-    
-    # Instale dependencias Java
-    
-    sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recommends
+# Herramientas y librerias esenciales.
 
-    # Clone GeoNode
-    
-    git clone https://github.com/isralopez/geonode.git
+sudo apt-get install -y build-essential libxml2-dev libxslt1-dev libjpeg-dev gettext git python-dev python-pip
 
-    # Instalar GeoNode en modo editable
-    
-    sudo pip install -e geonode
-    cd geonode
+# Dependencias Python and Django con paquetes oficiales
 
-    # Compila GeoServer
+sudo apt-get install python-pillow python-lxml python-psycopg2 python-django python-bs4 python-multipartposthandler transifex-client python-paver python-nose python-django-nose python-gdal python-django-pagination python-django-jsonfield python-django-extensions python-django-taggit python-httplib2
     
-    paver setup
+# Instale dependencias Java
 
-    # Arranque el servidor de desarrollo
-    
-    paver start
+sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recommends
 
-    # Visita la dirección de desarrollo:
-    
-    http://localhost:8000
-    
+# Clone GeoNode
 
-Once fully started, you should see a message indicating the address of your geonode.
-The default username and password are ``admin`` and ``admin``::
+git clone https://github.com/isralopez/geonode.git
+
+# Instalar GeoNode en modo editable
+
+sudo pip install -e geonode
+
+cd geonode
+
+# Compila GeoServer
+
+paver setup
+
+# Arranque el servidor de desarrollo
+
+paver start
+
+# Visita la dirección de desarrollo:
+
+http://localhost:8000
+    
+Una vez totalmente iniciado, se debe mirar un mensaje indicando la dirección de tu geonode.
+El usuario y contraseña por default son:``admin`` y ``admin``::
   
   Development GeoNode is running at http://localhost:8000/
   The GeoNode is an unstoppable machine
