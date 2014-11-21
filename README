@@ -55,7 +55,7 @@ sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recomm
 
         gdal-config --version
 
-        # Si no sale la version instalada instalar paquete:
+        # Si no se obtiene la version instalada ejecutar
 
         sudo apt-get install libgdal-dev
 
@@ -86,9 +86,11 @@ sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recomm
         # Agregar las siguientes líneas al archivo gdal.pth que se acaba de crear y guardarlo
 
         /usr/lib/
+
         /usr/include/gdal
 
-# Clone GeoNode
+
+# Clone GeoNode en la ubicacion deseada
 
 git clone https://github.com/isralopez/geonode.git
 
