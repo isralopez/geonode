@@ -22,42 +22,43 @@ Clonando este repositorio se tendra una version funcional con base de datos en S
 
 Para hacer desarrollo en el código fuente, estas son las instrucciones:
 
-    # Obten la ultima lista apt-get
+# Obten la ultima lista apt-get
     
-    sudo apt-get update
+sudo apt-get update
 
-    # Herramientas y librerias esenciales.
+# Herramientas y librerias esenciales.
     
-    sudo apt-get install -y build-essential libxml2-dev libxslt1-dev libjpeg-dev gettext git python-dev python-pip
+sudo apt-get install -y build-essential libxml2-dev libxslt1-dev libjpeg-dev gettext git python-dev python-pip
 
-    # Dependencias Python and Django con paquetes oficiales
-    
-    sudo apt-get install python-pillow python-lxml python-psycopg2 python-django python-bs4 python-multipartposthandler transifex-client python-paver python-nose python-django-nose python-gdal python-django-pagination python-django-jsonfield python-django-extensions python-django-taggit python-httplib2
-    
-    # Instale dependencias Java
-    
-    sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recommends
+# Dependencias Python and Django con paquetes oficiales
 
-    # Clone GeoNode
+sudo apt-get install python-pillow python-lxml python-psycopg2 python-django python-bs4 python-multipartposthandler transifex-client python-paver python-nose python-django-nose python-gdal python-django-pagination python-django-jsonfield python-django-extensions python-django-taggit python-httplib2
     
-    git clone https://github.com/isralopez/geonode.git
+# Instale dependencias Java
+    
+sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recommends
 
-    # Instalar GeoNode en modo editable
+# Clone GeoNode
     
-    sudo pip install -e geonode
-    cd geonode
+git clone https://github.com/isralopez/geonode.git
 
-    # Compila GeoServer
+# Instalar GeoNode en modo editable
     
-    paver setup
+sudo pip install -e geonode
 
-    # Arranque el servidor de desarrollo
-    
-    paver start
+cd geonode
 
-    # Visita la dirección de desarrollo:
+# Compila GeoServer
     
-    http://localhost:8000
+paver setup
+
+# Arranque el servidor de desarrollo
+    
+paver start
+
+# Visita la dirección de desarrollo:
+    
+http://localhost:8000
     
 
 Once fully started, you should see a message indicating the address of your geonode.
