@@ -73,15 +73,19 @@ sudo apt-get install -y --force-yes openjdk-6-jdk ant maven2 --no-install-recomm
 
         # Ir a la a la ruta del entorno virtual
 
-        (geonode)$ cd /.virtualenvs/geonode/lib/python2.7/site-packages
-
+        (geonode)$ cd .virtualenvs/geonode/build/gdal/
+        
         # Ejecutar
 
         (geonode)$ python setup.py build_ext --gdal-config=gdal-config --library-dirs=/usr/lib --libraries=gdal --include-dirs=/usr/include/gdal install
 
+        # Ir a la a la ruta del entorno virtual
+
+        (geonode)$ cd .virtualenvs/geonode/lib/python2.7/site-packages
+        
         # Crear el archivo gdal.pth en la ruta especificada
 
-        vi virtualenv/geonode/lib/python2.7/site-packages/gdal.pth
+        gedit virtualenv/geonode/lib/python2.7/site-packages/gdal.pth
 
         # Agregar las siguientes líneas al archivo gdal.pth que se acaba de crear y guardarlo
 
