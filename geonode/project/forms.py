@@ -115,6 +115,8 @@ class ProjectForm(TranslationModelForm):
 
     class Meta:
         model = Project
+        fields = ['owner', 'title', 'abstract', 'purpose', 'date', 'date_type', 'edition',
+            'license', 'temporal_extent_start', 'temporal_extent_end']
         exclude = (
             'uuid',
             'contacts',

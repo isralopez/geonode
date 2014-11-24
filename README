@@ -100,7 +100,15 @@ git clone https://github.com/isralopez/geonode.git
 
 # Instalar GeoNode en modo editable
 
-sudo pip install -e geonode
+    # Sin entorno virtual:
+
+    sudo pip install -e geonode
+
+    # Con entorno virtual:
+
+    (geonode)$ pip install -e geonode
+
+# Cambiar al directorio
 
 cd geonode
 
