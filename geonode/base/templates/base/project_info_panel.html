@@ -16,7 +16,7 @@
     <dt>{% trans "Purpose" %}</dt>
     <dd>{{ resource.purpose|escape|urlize|linebreaks|safe|truncatechars:300 }}</dd>
     {% endif %}
-    
+
     {% if resource.date %}
     <dt>{% trans "Date" %} {% trans resource.date_type|title %}</dt>
     <dd>{{ resource.date }}</dd>
@@ -44,7 +44,7 @@
     <dd>{{ resource.category }}</dd>
     {% endif %}
 
-  
+
     {% if resource.owner %}
     <dt>{% trans "Owner" %}</dt>
     <dd><a href="{{ resource.owner.get_absolute_url }}">{{ resource.owner.username }}</a></dd>

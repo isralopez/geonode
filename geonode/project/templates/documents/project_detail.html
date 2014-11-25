@@ -26,12 +26,12 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8" id = "general">
 
     {% if resource.extension|lower in imgtypes and resource.doc_file %}
     <div id="embedded_map">
       <a style="text-decoration:none;" href="{% url "project_download" resource.id %}" target="_blank">
-        <img src="{% url "project_download" resource.id %}" width='100%' />
+        <img src="{% url "project_download" resource.id %}" width='100%'/>
       </a>
     </div>
     {% elif resource.doc_file %}
@@ -39,7 +39,7 @@
     {% elif  resource.doc_url %}
     <p><a href="{{ resource.doc_url }}" target="_blank">Download the {{ resource }} document.</a> <small>({% trans 'External Resource' %})</small></p>
     {%  endif %}
-       
+
     <div class="documents-actions">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#info" data-toggle="tab"><i class="fa fa-info-circle"></i>{% trans "Info" %}</a></li>
@@ -57,11 +57,11 @@
       {% block social_links %}
         {% include "social_links.html" %}
       {% endblock %}
-        
+
       <article id="comments" class="tab-pane">
       {% include "_comments.html" %}
       </article>
-        
+
       <article id="rate" class="tab-pane">
         <!-- TODO: Move this to a reusable template snippet -->
         {% if request.user.is_authenticated %}
@@ -78,12 +78,172 @@
     </div>
   </div>
 
+  <div class = "col-md-8" id = "metadataPro" style = "display: none;">
+    <h6 align = "center"><strong>Metadatos del Proyecto</strong></h6>
+
+    <h6 align = "center">IDENTIFICACIÓN DE LA INFORMACIÓN</h6>
+
+    {% if resource.abstract %}
+    <dt>{% trans "Abstract" %}</dt>
+    <dd>{{ resource.abstract|escape|urlize|linebreaks|safe|truncatechars:500 }}</dd>
+    {% endif %}
+
+    {% if resource.purpose %}
+    <dt>{% trans "Purpose" %}</dt>
+    <dd>{{ resource.purpose|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+    {% endif %}
+
+    {% if resource.keyword_list %}
+    <dt>{% trans "Keywords" %}</dt>
+    <dd>{% for keyword in resource.keyword_list %}
+        {{ keyword }}
+        {% endfor %}</dd>
+    {% endif %}
+
+    {% if resource.date %}
+    <dt>{% trans "Fecha" %}</dt>
+    <dd>{{ resource.date|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+    {% endif %}
+
+   {% if resource.edition %}
+   <dt>{% trans "Edición" %}</dt>
+   <dd>{{ resource.edition|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+   {% endif %}
+
+   {% if resource.category %}
+   <dt>{% trans "Categoria" %}</dt>
+   <dd>{{ resource.category|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+   {% endif %}
+
+   {% if resource.academic_coordinator %}
+   <dt>{% trans "Coordinador Academico" %}</dt>
+   <dd>{{ resource.academic_coordinator}}</dd>
+   {% endif %}
+
+   {% if resource.technical_coordinator %}
+   <dt>{% trans "Coordinador Tecnico" %}</dt>
+   <dd>{{ resource.technical_coordinator}}</dd>
+   {% endif %}
+
+
+
+    <h6 align = "center">FUENTE DE INFORMACIÓN</h6>
+
+    {% if resource.source %}
+    <dt>{% trans "Fuente" %}</dt>
+    <dd>{{ resource.source}}</dd>
+    {% endif %}
+
+    {% if resource.spatial_representation_type %}
+    <dt>{% trans "Tipos de representación espacial" %}</dt>
+    <dd>{{ resource.spatial_representation_type|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+    {% endif %}
+
+    {% if resource.project_belong %}
+    <dt>Proyecto pertenece</dt>
+    <dd>{{ resource.project_belong}}</dd>
+    {% endif %}
+
+    {% if resource.knowledge_model %}
+    <dt> Modelo de Conocimiento</dt>
+    <dd>{{ resource.knowledge_model}}</dd>
+    {% endif %}
+
+    {% if resource.colaborators %}
+    <dt>Colaboradores</dt>
+    <dd>{{ resource.colaborators}}</dd>
+    {% endif %}
+
+
+    <h6 align = "center">INFORMACIÓN DE PRIVACIDAD</h6>
+
+
+    {% if resource.license %}
+    <dt>{% trans "Licencia" %}</dt>
+    <dd>{{ resource.license|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+    {% endif %}
+
+
+
+    {% if resource.rights %}
+    <dt>{% trans "Derechos" %}</dt>
+    <dd>{{ resource.rights}}</dd>
+    {% endif %}
+
+
+    {% if resource.disciplines %}
+    <dt>Disciplinas</dt>
+    <dd>{{ resource.disciplines}}</dd>
+    {% endif %}
+
+    {% if resource.credits_to %}
+    <dt>Creditos</dt>
+    <dd>{{ resource.credits_to}}</dd>
+    {% endif %}
+
+    {% if resource.vinc_intitutions %}
+    <dt>Instituciones Vinculadas</dt>
+    <dd>{{ resource.vinc_intitutions}}</dd>
+    {% endif %}
+
+    {% if resource.distribution_url %}
+    <dt>URL Aplicación</dt>
+    <dd><a href="{{ resource.distribution_url}}" target="_blank">{{ resource.distribution_url}}</a></dd>
+    {% endif %}
+
+    {% if resource.develop_arch %}
+    <dt>Arquitectura Desarrollo</dt>
+    <dd>{{ resource.develop_arch}}</dd>
+    {% endif %}
+
+    {% if resource.repo_link %}
+    <dt>Liga del Repositorio</dt>
+    <dd><a href="{{ resource.repo_link}}" target="_blank">{{ resource.repo_link}}</a></dd>
+    {% endif %}
+
+    {% if resource.min_inst_req  %}
+    <dt>Requisitos minimos</dt>
+    <dd>{{ resource.min_inst_req }}</dd>
+    {% endif %}
+
+    <script type = "text/javascript">
+      function volver() {
+          document.getElementById('metadataPro').style.display='none';
+          $("#general").css("display", "block");
+        }
+    </script>
+    <li class="list-group-item" style = "width: 100px;">
+      <a style="text-decoration:none;"><button class="btn btn-default btn-md btn-block" id = "atras" onclick="volver();">{% trans "Atrás" %}</button></a>
+    </li>
+  </div>
+
   <div class="col-md-4">
 
     <ul class="list-group">
 
+      <script type = "text/javascript">
+        function metadataProject() {
+            document.getElementById('metadataPro').style.display='block';
+            //document.getElementById('general').style.display='none';
+            $("#general").css("display", "none");
+          }
+
+          /*function metadataProject(id) {
+           var elElemento = document.getElementById(id);
+           if(elElemento.style.visibility == "visible") {
+              //elElemento.style.visibility = "hidden";
+              $("#metadataPro").css("display", "block");
+              $("#general").css("display", "none");
+           } else {
+             elElemento.style.visibility = "visible";
+
+         }
+       }*/
+
+      </script>
+
       <li class="list-group-item">
-          <a style="text-decoration:none;" target="_blank" href="#"><button class="btn btn-default btn-md btn-block">Ver Metadato</button></a>
+          <a style="text-decoration:none;"><button class="btn btn-default btn-md btn-block" id = "btn_ver_metadata" onclick="metadataProject();">{% trans "Ver metadato" %}</button></a>
       </li>
 
       <li class="list-group-item">

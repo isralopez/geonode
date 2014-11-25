@@ -26,7 +26,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8" id = "col-md-81">
 
     {% if resource.extension|lower in imgtypes and resource.doc_file %}
     <div id="embedded_map">
@@ -39,7 +39,7 @@
     {% elif  resource.doc_url %}
     <p><a href="{{ resource.doc_url }}" target="_blank">Download the {{ resource }} document.</a> <small>({% trans 'External Resource' %})</small></p>
     {%  endif %}
-       
+
     <div class="documents-actions">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#info" data-toggle="tab"><i class="fa fa-info-circle"></i>{% trans "Info" %}</a></li>
@@ -57,11 +57,11 @@
       {% block social_links %}
         {% include "social_links.html" %}
       {% endblock %}
-        
+
       <article id="comments" class="tab-pane">
       {% include "_comments.html" %}
       </article>
-        
+
       <article id="rate" class="tab-pane">
         <!-- TODO: Move this to a reusable template snippet -->
         {% if request.user.is_authenticated %}
@@ -78,9 +78,94 @@
     </div>
   </div>
 
+      <div class = "col-md-8" id = "col-md-82" style="display: none;">
+      <h6 align = "center">IDENTIFICACIÓN DE LA INFORMACIÓN</h6>
+
+      {% if resource.abstract %}
+      <dt>{% trans "Abstract" %}</dt>
+      <dd>{{ resource.abstract|escape|urlize|linebreaks|safe|truncatechars:500 }}</dd>
+      {% endif %}
+
+      {% if resource.purpose %}
+      <dt>{% trans "Purpose" %}</dt>
+      <dd>{{ resource.purpose|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+      {% endif %}
+
+      {% if resource.date %}
+      <dt>{% trans "Fecha" %}</dt>
+      <dd>{{ resource.date|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+      {% endif %}
+
+     {% if resource.edition %}
+     <dt>{% trans "Edición" %}</dt>
+     <dd>{{ resource.edition|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+     {% endif %}
+
+     {% if resource.category %}
+     <dt>{% trans "Categoria" %}</dt>
+     <dd>{{ resource.category|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+     {% endif %}
+
+      <h6 align = "center">FUENTE DE LA INFORMACIÓN</h6>
+
+
+      {% if resource.regions %}
+      <dt>{% trans "Región" %}</dt>
+      <dd>{{ resource.regions|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+      {% endif %}
+
+
+      {% if resource.spatial_representation_type %}
+      <dt>{% trans "Tipos de representación espacial" %}</dt>
+      <dd>{{ resource.spatial_representation_type|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+      {% endif %}
+
+      <h6 align = "center">INFORMACIÓN DE PRIVACIDAD</h6>
+
+
+      {% if resource.license %}
+      <dt>{% trans "Licencia" %}</dt>
+      <dd>{{ resource.license|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
+      {% endif %}
+
+
+      <script type="text/javascript">
+            function ocultar(){
+              document.getElementById('col-md-82').style.display='none';
+              document.getElementById('col-md-81').style.display='block';
+            }
+      </script>
+      <div class = "list-group-item" style = "width: 100px;">
+        <a style="text-decoration:none;" href='#'><button class="btn btn-default btn-md btn-block" id = "btn_ver_metadata" onClick="ocultar();">{% trans "Atrás" %}</button></a>
+      </div>
+
+    </div>
+
+
   <div class="col-md-4">
 
     <ul class="list-group">
+
+            <!-- Btn Ver Metadato Documento -->
+
+      <script type="text/javascript">
+            function mostrar(){
+            	document.getElementById('col-md-82').style.display='block';
+            	document.getElementById('col-md-81').style.display='none';
+            }
+            function ocultar(){
+            	document.getElementById('col-md-82').style.display='none';
+              document.getElementById('col-md-81').style.display='block';
+            }
+      </script>
+
+      <div class = "list-group-item">
+        <a style="text-decoration:none;" href='#'><button class="btn btn-default btn-md btn-block" id = "btn_ver_metadata" onClick="mostrar();">{% trans "Ver metadato" %}</button></a>
+      </div>
+
+
+
+
       <li class="list-group-item">
         {% if resource.extension|lower in imgtypes and resource.doc_file %}
           <a style="text-decoration:none;" target="_blank" href="{% url "document_download" resource.id %}"><button class="btn btn-default btn-md btn-block">{% trans "Download Document" %}</button></a>
