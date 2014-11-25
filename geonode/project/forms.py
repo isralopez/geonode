@@ -67,6 +67,8 @@ class ProjectForm(TranslationModelForm):
         help_text="Direccion donde se puede visualizar la aplicacion descrita"
     )
 
+    #abstract = forms.CharField(required=True)
+
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
         rbases = list(Layer.objects.all())
@@ -115,6 +117,12 @@ class ProjectForm(TranslationModelForm):
 
     class Meta:
         model = Project
+        fields = ['owner','title','abstract','purpose','date_type','date', 'academic_coordinator', 'technical_coordinator',
+                  'colaborators','edition', 'source', 'rights',
+                  'temporal_extent_start', 'temporal_extent_end',
+                   'project_belong', 'knowledge_model', 'disciplines', 'credits_to', 'vinc_intitutions',
+                  'develop_arch', 'repo_link', 'min_inst_req', 'min_deploy_req'
+            ]
         exclude = (
             'uuid',
             'contacts',
@@ -233,7 +241,7 @@ class GeocyberCreateForm(TranslationModelForm):
 
     class Meta:
         model = Project
-        fields = ['title', 'doc_file']
+        fields = ['title', 'doc_file', 'license',]
         widgets = {
             'name': HiddenInput(attrs={'cols': 80, 'rows': 20}),
         }
